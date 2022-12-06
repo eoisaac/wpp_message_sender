@@ -1,5 +1,10 @@
 import { create, Whatsapp } from 'venom-bot';
 
+interface SendMessageProps {
+	to: string
+	body: string
+}
+
 export class Sender {
 	constructor() {
 		this.initialize();
@@ -10,16 +15,15 @@ export class Sender {
 	private initialize() {
 		const start = (client: Whatsapp) => {
 			this.client = client;
-			this.sendMessage('55900000000@c.us', 'Message test');
 		};
 
 		create({session: 'wpp_message_sender', multidevice: false})
 			.then((client) => start(client))
-			.catch((erro) => {console.log(erro);});
+			.catch((error) => {console.log(error);});
 	}
 
-	async sendMessage(to: string, body: string) {
+	async sendMessage({to, body}: SendMessageProps) {
 		// 55900000000@c.us @c.us -> send to contact
-		this.client.sendText(to, body);
+		await this.client.sendText(to, body);
 	}
 }
