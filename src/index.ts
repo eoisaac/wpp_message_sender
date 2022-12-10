@@ -9,24 +9,23 @@ app.use(express.urlencoded({ extended: false }));
 const port = 3333;
 const sender = new Sender();
 
-app.get('/status', (req: Request, res: Response) => {});
+// app.get('/status', (req: Request, res: Response) => {});
 
-app.post('/send',async (req: Request, res: Response) => {
-	const { receiver, message } = req.body;
+app.post('/send', async (req: Request, res: Response) => {
+  const { receiver, message } = req.body;
 
-	const defaultSend = {
-		to: `55${receiver}@c.us`,
-		body: message
-	};
+  const defaultSend = {
+    number: receiver,
+    message,
+  };
 
-	try {
-		await sender.sendMessage(defaultSend);
-		return res.status(200).json();
-
-	} catch(error) {
-		console.log(error);
-		res.status(500).json({ status: 'error', message: error });
-	}
+  try {
+    const sentMessage = await sender.sendMessage(defaultSend);
+    return res.status(200).json(sentMessage);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: 'error', message: error });
+  }
 });
 
 app.listen(port, () => console.log(`App listen on port: ${port}`));
