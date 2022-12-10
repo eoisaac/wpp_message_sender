@@ -25,6 +25,14 @@
     "rules": {
         "no-useless-constructor": "off",
         "import/prefer-default-export": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "max-len": [
+            "warn",
+            {
+                "code": 80,
+                "tabWidth": 2
+            }
+        ],
+        "lines-between-class-members": "off"
     }
 }
