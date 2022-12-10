@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "nodemon --watch 'src/' --exec 'ts-node src/index.ts' --exit-child --transpile-only -e ts",
     "lint": "eslint src --ext .ts && prettier --check './src/**/*.{ts,css}'",
     "lint:fix": "eslint src --ext .ts --fix && prettier --write './src/**/*.{ts,css}'"
@@ -38,6 +38,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "libphonenumber-js": "^1.10.15",
+    "uuid": "^9.0.0",
     "venom-bot": "^4.3.7"
   }
 }
