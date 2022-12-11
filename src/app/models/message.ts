@@ -1,4 +1,5 @@
 interface MessageProps {
+  id: string
   receiver: string;
   content: string;
 }
