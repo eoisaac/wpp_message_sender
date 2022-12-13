@@ -13,3 +13,15 @@ router.post('/messages/send', async (req: Request, res: Response) => {
 
   res.status(200).json(result);
 });
+
+router.get('/code', async (req: Request, res: Response) => {
+  const result = await SendTextMessage.qrCode();
+
+  res.status(200).json(result);
+});
+
+router.get('/status', async (req: Request, res: Response) => {
+  const result = await SendTextMessage.status();
+
+  res.status(200).json(result);
+});

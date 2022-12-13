@@ -33,6 +33,6 @@
                 "tabWidth": 2
             }
         ],
-        "lines-between-class-members": "off"
+        "lines-between-class-members": "error"
     }
 }
