@@ -12,29 +12,13 @@ export class Sender {
 
   private qrCode!: QRCode;
 
-  private status!: string;
-
   constructor(props: SenderProps) {
     this.props = props;
     this.initialize(this.props.sessionName);
   }
 
-  private initialize(sessionName: string) {
+  private async initialize(sessionName: string) {
     create(
-      // sessionName,
-      // (
-      //   qrCode: string,
-      //   asciiQR: string,
-      //   attempts: number,
-      //   urlCode?: string,
-      // ) => {
-      //   this.setQrCode = {
-      //     qrCode, asciiQR, attempts, urlCode,
-      //   };
-      // },
-      // (statusSession: string) => {
-      //   this.status = statusSession;
-      // },
       {
         session: sessionName,
         multidevice: false,
@@ -70,13 +54,5 @@ export class Sender {
 
   set setQrCode(qrCode: QRCode) {
     this.qrCode = qrCode;
-  }
-
-  get getStatus() {
-    return this.status;
-  }
-
-  set setStatus(status: string) {
-    this.status = status;
   }
 }
