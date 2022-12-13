@@ -37,9 +37,10 @@
         "typescript": "^4.9.3"
     },
     "dependencies": {
-        "vitest": "^0.25.7",
+        "dotenv": "^16.0.3",
         "express": "^4.18.2",
         "libphonenumber-js": "^1.10.15",
-        "venom-bot": "^4.3.7"
+        "venom-bot": "^4.3.7",
+        "vitest": "^0.25.7"
     }
 }
