@@ -1,9 +1,9 @@
-import { randomUUID } from 'crypto';
+import { SendTextResponse } from '../../@types/app';
 import { formatPhoneNumber } from '../../utils/formatPhoneNumber';
 import { Message } from '../models/message';
 import { Sender } from '../models/sender';
 
-interface SendTextMessageRequest {
+export interface SendTextMessageRequest {
   receiver: string
   content: string
 }
@@ -15,14 +15,16 @@ export class SendTextMessage {
   static async execute({ receiver, content }: SendTextMessageRequest):
   Promise<SendTextMessageResponse> {
     const client = sender.getClient;
-
     const phoneNumber = formatPhoneNumber(receiver);
-    await client.sendText(`${phoneNumber}@c.us`, content);
+
+    const response = await client.sendText(`${phoneNumber}@c.us`, content);
+    const responseData = response as SendTextResponse;
 
     const message = new Message({
-      id: randomUUID(),
-      receiver,
-      content,
+      id: responseData.to.id,
+      receiver: responseData.to.remote.user,
+      content: responseData.text,
+      error: responseData.erro,
     });
 
     return message;

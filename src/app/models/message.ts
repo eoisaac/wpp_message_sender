@@ -2,6 +2,7 @@ interface MessageProps {
   id: string
   receiver: string;
   content: string;
+  error: boolean
 }
 
 export class Message {
@@ -25,5 +26,13 @@ export class Message {
 
   set receiver(receiver: string) {
     this.props.receiver = receiver;
+  }
+
+  get error() {
+    return this.props.error;
+  }
+
+  set error(error: boolean) {
+    this.props.error = error;
   }
 }

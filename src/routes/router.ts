@@ -13,9 +13,3 @@ router.post('/messages/send', async (req: Request, res: Response) => {
 
   res.status(200).json(result);
 });
-
-router.get('/', async (res: Response) => {
-  const message = 'Welcome!';
-
-  res.status(200).json(message);
-});
