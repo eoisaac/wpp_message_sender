@@ -20,7 +20,7 @@ describe('format phone number', () => {
   });
 
   it('should throw error on invalid phone number pattern', () => {
-    const number = '+131971546159';
+    const number = '+131912345678';
 
     const formatExec = () => {
       formatPhoneNumber(number);
