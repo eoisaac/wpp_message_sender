@@ -1,5 +1,6 @@
 interface MessageProps {
   id: string
+  session: string
   receiver: string;
   content: string;
   error: boolean

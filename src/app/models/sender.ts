@@ -1,4 +1,4 @@
-import { create, Whatsapp } from 'venom-bot';
+import { Whatsapp, create } from 'venom-bot';
 import { QRCode } from '../../@types/app';
 
 interface SenderProps {
@@ -7,9 +7,7 @@ interface SenderProps {
 
 export class Sender {
   private props: SenderProps;
-
   private client!: Whatsapp;
-
   private qrCode!: QRCode;
 
   constructor(props: SenderProps) {
@@ -54,5 +52,9 @@ export class Sender {
 
   set setQrCode(qrCode: QRCode) {
     this.qrCode = qrCode;
+  }
+
+  get getSession() {
+    return this.props.sessionName;
   }
 }

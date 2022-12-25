@@ -33,7 +33,8 @@
                 "tabWidth": 2
             }
         ],
-        "lines-between-class-members": "error",
+        "lines-between-class-members": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
         "no-throw-literal": "off",
         "@typescript-eslint/no-throw-literal": "off",
         "consistent-return": "off"

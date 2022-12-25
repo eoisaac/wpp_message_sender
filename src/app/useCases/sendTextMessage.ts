@@ -1,5 +1,6 @@
 import { SendTextResponse } from '../../@types/app';
 import { formatPhoneNumber } from '../../utils/formatPhoneNumber';
+import { DefaultException } from '../models/defaultException';
 import { Message } from '../models/message';
 import { Sender } from '../models/sender';
 
@@ -20,11 +21,16 @@ export class SendTextMessage {
     const response = await client.sendText(`${phoneNumber}@c.us`, content);
     const responseData = response as SendTextResponse;
 
+    if (responseData.erro) {
+      throw new DefaultException({ code: 400, message: responseData.text });
+    }
+
     const message = new Message({
       id: responseData.to.id,
       receiver: responseData.to.remote.user,
       content: responseData.text,
       error: responseData.erro,
+      session: sender.getSession,
     });
 
     return message;

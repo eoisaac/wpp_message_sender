@@ -11,7 +11,7 @@ router.post('/messages/send', async (req: Request, res: Response) => {
     if (!receiver || !message) {
       throw new DefaultException({
         code: 400,
-        message: 'You must add the receiver and the message',
+        message: 'You must add the receiver and the message!',
       });
     }
 
