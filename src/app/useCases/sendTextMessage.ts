@@ -21,7 +21,7 @@ export class SendTextMessage {
     const response = await client.sendText(`${phoneNumber}@c.us`, content);
     const responseData = response as SendTextResponse;
 
-    if (responseData.erro) {
+    if (responseData.error) {
       throw new DefaultException({ code: 400, message: responseData.text });
     }
 
@@ -29,7 +29,7 @@ export class SendTextMessage {
       id: responseData.to.id,
       receiver: responseData.to.remote.user,
       content: responseData.text,
-      error: responseData.erro,
+      error: responseData.error,
       session: sender.getSession,
     });
 

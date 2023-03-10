@@ -1,42 +1,45 @@
 {
     "env": {
-        "es2021": true,
-        "node": true,
-        "jest": true
+      "es2021": true,
+      "node": true,
+      "jest": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "airbnb-base",
-        "airbnb-typescript/base"
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb-base",
+      "airbnb-typescript/base"
     ],
     "overrides": [],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": [
-            "./tsconfig.json"
-        ]
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "project": [
+        "./tsconfig.json"
+      ]
     },
     "plugins": [
-        "@typescript-eslint"
+      "@typescript-eslint"
     ],
     "rules": {
-        "no-useless-constructor": "off",
-        "import/prefer-default-export": "off",
-        "no-console": "off",
-        "max-len": [
-            "warn",
-            {
-                "code": 80,
-                "tabWidth": 2
-            }
-        ],
-        "lines-between-class-members": "off",
-        "@typescript-eslint/lines-between-class-members": "off",
-        "no-throw-literal": "off",
-        "@typescript-eslint/no-throw-literal": "off",
-        "consistent-return": "off"
+      "no-useless-constructor": "off",
+      "import/prefer-default-export": "off",
+      "no-console": "off",
+      "max-len": [
+        "warn",
+        {
+          "code": 80,
+          "tabWidth": 2
+        }
+      ],
+      "lines-between-class-members": "off",
+      "@typescript-eslint/lines-between-class-members": "off",
+      "no-throw-literal": "off",
+      "@typescript-eslint/no-throw-literal": "off",
+      "consistent-return": "off",
+      "no-await-in-loop": "off",
+      "no-restricted-syntax": "off"
     }
-}
+  }
+  

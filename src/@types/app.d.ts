@@ -13,7 +13,7 @@ export interface SendTextResponse {
     },
     id: string
   },
-  erro: boolean,
+  error: boolean,
   text: string,
   status: string,
 }

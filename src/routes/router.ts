@@ -6,24 +6,36 @@ export const router = Router();
 
 router.post('/messages/send', async (req: Request, res: Response) => {
   try {
-    const { receiver, message } = req.body;
+    const messageList = req.body;
 
-    if (!receiver || !message) {
+    if (!messageList || messageList.length === 0) {
       throw new DefaultException({
         code: 400,
-        message: 'You must add the receiver and the message!',
+        message: 'You must provide at least one message to send!',
       });
     }
 
-    const result = await SendTextMessage.execute({
-      receiver,
-      content: message,
-    });
+    const results = [];
+    for (const message of messageList) {
+      const { receiver, content } = message;
 
-    return res.status(200).json(result);
+      if (!receiver || !content) {
+        throw new DefaultException({
+          code: 400,
+          message: 'You must add the receiver and the message for each item!',
+        });
+      }
+
+      const result = await SendTextMessage.execute({ receiver, content });
+      results.push(result);
+    }
+
+    return res.status(200).json(results);
   } catch (exception) {
     if (exception instanceof DefaultException) {
       res.status(exception.code).json(exception.error);
+    } else {
+      res.status(500).json({ message: 'An unexpected error occurred!' });
     }
   }
 });
